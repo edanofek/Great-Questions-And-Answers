@@ -1,12 +1,12 @@
-describe({
-    it('should create mock template',{
-        //1.create mock template 
-        //2.check for equal mock template
-    });
+QUnit.test( "templates tests", function( assert ) {
+    
 
-    it('there should be 3 li elemnets  ',{
+    it('mock templateArray should be 3 elements ',{
         //1.create mock template 
+        var mockTemplate =  template.templateArray;
         //2.check for equal mock template with 3 li elems
+        assert.equal(mockTemplate.length,3,"mock templateArray should be 3 elements");
+
     });
     
 });
