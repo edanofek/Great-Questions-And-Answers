@@ -1,7 +1,12 @@
-(function(){
+var MockTreeDS = (function(){
     
-    // con't here
-    // item holder - data
+    /**
+     * Node item data holder
+     * @param {name of node} name 
+     * @param {base array of children} children 
+     * @param {key for the node} key 
+     * @param {parent id to node} pid 
+     */
     function Node(name,children,key,pid){
         this.name = name;
         this.children = children;
@@ -9,13 +14,46 @@
         this.pid = pid;
     };
 
+    /**
+     * Base init for the first node in the tree (root element)
+     */
     var MockTreeDS = function (){
-        this.root = null;
+        this.root = null; //base node for the tree
     };
 
-    // check with unit test resaults - con't here
-    mockTreeDS.prototype.insert = function(name,children,key,pid){
-        var root = this.root;
+    /**
+     * find the node by tree id - (private utility method)
+     * @param {which node to start looking from} nodeToStartLookFrom 
+     * @param {node key to look for} nodeID 
+     */
+    var findNodeByID = function(nodeToStartLookFrom,nodeID){
+
+        // Don't think this code needed
+        // if(nodeToStartLookFrom.key === nodeID)
+        //     return nodeToStartLookFrom;
+        
+        for(var ind=0;ind<nodeToStartLookFrom.children.length;ind++){
+            if(nodeToStartLookFrom.children[ind].key === nodeID){
+                return nodeToStartLookFrom.children[ind];
+            }else if(nodeToStartLookFrom.children[ind].children.length > 0){ 
+                //return recursion method with children nodes
+               return findNodeByID(nodeToStartLookFrom.children[ind],nodeID);
+            }
+        }
+
+        return null; //not found the node looking for
+    }
+
+    
+    /**
+     * Insert method for array (based on parent key)
+     * @param {name of the new node} name 
+     * @param {children array for the new node} children 
+     * @param {key for the new node} key 
+     * @param {parent key for the new node - also to decarle where to place the new node} pid 
+     */
+    MockTreeDS.prototype.insert = function(name,children,key,pid){
+        var root = this.root; //the first node
 
         if(!root){
             // 'root',[],1,-1
@@ -25,44 +63,53 @@
 
         var currentNode = root;
         var newNode = new Node(name,children,key,pid);
-
-        // con't here - don't think it will work
-        currentNode.children.push(newNode);
-        // this.children.push(newNode);
+        var tempNodeKey = findNodeByID(this.root,pid);
         
-            // this.children.push(newNode);
+        if(tempNodeKey!== null){ //set the new root node for the found node children
+            tempNodeKey.children.push(newNode);
+        }else{ //set the new node for node one of the children
+            currentNode.children.push(newNode);
+        }
+
     }
 
 
-    mockTreeDS.prototype.delete = function(key,pid){
-        //should be recursive
-        // if(!root) {
-            for(var ind =0; ind < this.children.length; ind ++){
-                if(this.children[ind].length > 0){
-                    this.delete(this.children[ind].key,this.children[ind].pid);
-                }
+    /**
+     * delete method - recursioive method (delete all the leefs from the tree)
+     * @param {the key for node to delete} key 
+     */
+    MockTreeDS.prototype.delete = function(key){
 
-            }
-            //clean value
-            this.children=[];
-            this.name = "";
-            this.key = -1;
-            this.pid = -1;     
-        // }
+        var selectedNode = findNodeByID(this.root,key);
+
+        for(var ind =0; ind < selectedNode.children.length; ind ++){
+            this.delete(selectedNode.children[ind].key);
+        }
+
+        var parentSelectedNode = findNodeByID(this.root,selectedNode.pid);
+
+        selectedNode.children=[];
+        selectedNode.name="";
+        selectedNode.key=-1;
+
+        selectedNode.pid=-1;
+
+        parentSelectedNode.children = [];
+        
     };
 
-    // should update this value
-    mockTreeDS.prototype.upadteName =function(key,pid,name){
-        //update name
-        if(!root){
-            this[key].name = name;
-            return;
-        }
-        var currentNode = root;
-        currentNode[key].name = name;
+    /**
+     * con't here
+     * @param {*} key 
+     * @param {*} name 
+     */
+    MockTreeDS.prototype.upadteName =function(key,name){
+        
+        var selectedNode = findNodeByID(this.root,key);
+        selectedNode.name = name;
     }
 
-    mockTreeDS.prototype.createflatArr = function(){
+    MockTreeDS.prototype.createflatArr = function(){
         var retArr = [];
         for (var key in this.children) {
             if (this.children.hasOwnProperty(key)) {
@@ -73,6 +120,8 @@
         return retArr;
     }
     
-    return MockTreeDS;
+    return {
+        MockTreeDS:MockTreeDS
+    };
 
 })();

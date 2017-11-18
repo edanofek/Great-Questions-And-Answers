@@ -11,57 +11,74 @@
 // 2.4.1.test update one node place (branch) - futru(e)rstic
 
 // 1.test declare a variable instance
-var mockTreeDS = new MockTreeDS();
+
 
 QUnit.test("declare treeDS instance", function( assert ) {
+    var mockTreeDS = new MockTreeDS.MockTreeDS();
 
-    assert.ok(mockTreeDS !== null && mockTreeDS !==undefined,"mock tree ds is declared");
-
+    assert.ok(mockTreeDS !== null 
+        && mockTreeDS !==undefined
+        && mockTreeDS.root === null,"mock tree ds is declared");
 });
 
 QUnit.test("test insert new object to mock tree ds",function(assert){
-    
-    assert.equal(mockTreeDS.length,0,"mock tree length equal 0");
+    var mockTreeDS = new MockTreeDS.MockTreeDS();
 
-    mockTreeDS.insert({name:a,children:[],key:1,pid:0});
+    assert.equal(mockTreeDS.root,null,"mock tree root should be equal to null");
     
-    assert.equal(mockTreeDS.length,1,"mock tree length equal 1");
+    mockTreeDS.insert('root',[],1,0);
+    mockTreeDS.insert('a',[],1,0);
+    
+    assert.equal(mockTreeDS.root.children.length,1,"mock tree after 1 time : (root->a) insert length equal is 1");
+    mockTreeDS.insert('b',[],2,0);
+    assert.equal(mockTreeDS.root.children.length,2,"mock tree after 2 time : (root->b) insert length equal is 2");
+
+    mockTreeDS.insert('c',[],3,1);
+    assert.equal(mockTreeDS.root.children[0].children.length,1,"mock tree after 3 time: (a->c) insert length equal is 1");
+    
+    mockTreeDS.insert('d',[],4,0);
+    assert.equal(mockTreeDS.root.children.length,3,"mock tree after 4 time: (root->d) insert length equal is 3");
+
+    mockTreeDS.insert('e',[],5,3);
+    assert.equal(mockTreeDS.root.children[0].children[0].children.length,1,"mock tree after 5 time: (c->e) insert length equal is 1");
 
 });
 
 QUnit.test("test delete all nodes for branch",function(assert){
+    var mockTreeDS = new MockTreeDS.MockTreeDS();
+    mockTreeDS.insert('root',[],1,0);
+    mockTreeDS.insert('a',[],1,0);
+    mockTreeDS.insert('b',[],2,0);
+    mockTreeDS.insert('c',[],3,1);
+    mockTreeDS.insert('d',[],4,3);
+    mockTreeDS.delete(3);
+
+    assert.equal(mockTreeDS.root.children[0].children.length,0,"mock tree length after first delete (c->d - delete) equal to 0");
+    assert.equal(mockTreeDS.root.children.length,2,"mock tree length equal 2 for root children");
     
-    mockTreeDS.insert({name:a,children:[],key:1,pid:0});
-    mockTreeDS.delete({key:1,pid:-1});
-    assert.equal(mockTreeDS.length,0,"mock tree length equal 0 afer delete");
-    
+
 });
 
-// QUnit.test("test update node name",function(assert){
-    
-//     mockTreeDS.insert({name:a,children:[],key:1,pid:0});
-//     mockTreeDS.delete({key:1,pid:-1});
-//     assert.equal(mockTreeDS.length,0,"mock tree length equal 0 afer delete");
-    
-// });
 
 QUnit.test("test update node name",function(assert){
-    
-    mockTreeDS.insert({name:a,children:[],key:1,pid:0});
-    mockTreeDS[0].upadteName('mockName');
-    assert.equal(mockTreeDS[0].name,'mockName',"mock tree name in node 0 equal 'mockName' ");
+    var mockTreeDS = new MockTreeDS.MockTreeDS();
+    mockTreeDS.insert('root',[],1,0);
+    mockTreeDS.insert('a',[],1,0);
+    mockTreeDS.upadteName(1,'mockName');
+    assert.equal(mockTreeDS.root.children[0].name,'mockName',"mock tree name in node 0 equal 'mockName' ");
     
 });
 
 
 QUnit.test("test convert to flat array and draw the array",function(assert){
     
-    mockTreeDS.insert({name:a,children:[],key:1,pid:0});
-    mockTreeDS[1].children.push({name:d,children:[],key:4,pid:1});
-
-    mockTreeDS.insert({name:b,children:[],key:2,pid:0});
-    mockTreeDS.insert({name:c,children:[],key:3,pid:0});
-
+    var mockTreeDS = new MockTreeDS.MockTreeDS();
+    mockTreeDS.insert('root',[],1,0);
+    mockTreeDS.insert('a',[],1,0);
+    mockTreeDS.insert('b',[],2,0);
+    mockTreeDS.insert('c',[],3,1);
+    mockTreeDS.insert('d',[],4,3);
+    
     var flatArr = mockTreeDS.createflatArr();
 
     assert.equal(flatArr.length,4,"flat arr length equal 4 ");
