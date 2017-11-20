@@ -99,25 +99,33 @@ var MockTreeDS = (function(){
     };
 
     /**
-     * con't here
-     * @param {*} key 
-     * @param {*} name 
+     * update name to specific node
+     * @param {key to the node} key 
+     * @param {name to update} name 
      */
     MockTreeDS.prototype.upadteName =function(key,name){
         
         var selectedNode = findNodeByID(this.root,key);
-        selectedNode.name = name;
+        if(selectedNode!==null && selectedNode!==undefined){
+            selectedNode.name = name;
+        }
     }
 
-    MockTreeDS.prototype.createflatArr = function(){
-        var retArr = [];
-        for (var key in this.children) {
-            if (this.children.hasOwnProperty(key)) {
-                var element = this.children[key];
-                // con't here
-            }
+    /**
+     *  Convert the tree array into flat array
+     * @param {start of node to create the sub array from} nodeToLookFor 
+     * @param {the ref array to return} retArr 
+     */
+    MockTreeDS.prototype.createflatArr = function(nodeToLookFor,retArr){
+        
+        if(nodeToLookFor === null || nodeToLookFor === undefined){
+            nodeToLookFor = this.root;
         }
-        return retArr;
+        retArr.push({key:nodeToLookFor.key,name:nodeToLookFor.name,pid:nodeToLookFor.pid});
+        nodeToLookFor.children.forEach(node => {
+            this.createflatArr(node,retArr);
+        });
+        
     }
     
     return {

@@ -79,10 +79,9 @@ QUnit.test("test convert to flat array and draw the array",function(assert){
     mockTreeDS.insert('c',[],3,1);
     mockTreeDS.insert('d',[],4,3);
     
-    var flatArr = mockTreeDS.createflatArr();
+    var flatArr = [];
+    mockTreeDS.createflatArr(mockTreeDS.root,flatArr);
 
-    assert.equal(flatArr.length,4,"flat arr length equal 4 ");
-    assert.equal(flatArr[0],{name:a,key:1},"flat arr in place 0 should be equal a ");
-    assert.equal(flatArr[1],{name:d,key:2},"flat arr in place 1 should be equal d ");
+    assert.equal(flatArr.length,5,"flat arr length equal 5 - including root node");
     
 });
