@@ -2,15 +2,13 @@
     Tree DS tests
  */
 
-// 2.test all curd operation with childrens:
-// 2.1.test insert - V
-// 2.2.test delete all nodes for branch - V
-// 2.2.1.test delete all one node for branch - ? (don't think it's needed)
-// 2.3.test draw / print the logic of flat array - V
-// 2.4.test update one node name - V
-// 2.4.1.test update one node place (branch) - futru(e)rstic
-
-// 1.test declare a variable instance
+// 1.test all curd operation with childrens:
+// 1.1.test insert - V
+// 1.2.test delete all nodes for branch - V
+// 1.2.1.test delete all one node for branch - V
+// 1.3.test draw / print the logic of flat array - V
+// 1.4.test update one node name - V
+// 1.4.1.test update one node place (branch) - V
 
 
 QUnit.test("declare treeDS instance", function( assert ) {
