@@ -37,7 +37,14 @@ var MockTreeDS = (function(){
                 return nodeToStartLookFrom.children[ind];
             }else if(nodeToStartLookFrom.children[ind].children.length > 0){ 
                 //return recursion method with children nodes
-               return findNodeByID(nodeToStartLookFrom.children[ind],nodeID);
+               var nodeFound = findNodeByID(nodeToStartLookFrom.children[ind],nodeID);
+                // in case we didn't found the node in the first run - we need to advacne in the loop
+               if(nodeFound !== null){
+                   return nodeFound;
+               }
+               else{
+                   continue;
+               }
             }
         }
 
@@ -121,6 +128,7 @@ var MockTreeDS = (function(){
         if(nodeToLookFor === null || nodeToLookFor === undefined){
             nodeToLookFor = this.root;
         }
+        // check this code
         retArr.push({key:nodeToLookFor.key,name:nodeToLookFor.name,pid:nodeToLookFor.pid});
         nodeToLookFor.children.forEach(node => {
             this.createflatArr(node,retArr);

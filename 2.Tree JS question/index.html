@@ -9,9 +9,9 @@
     </body>
     <script type="text/javascript">
         var mockTreeDS = new  MockTreeDS.MockTreeDS();
-        var treeDSDOM = new TreeDSDOM(mockTreeDS);
+        var treeDSDOM = new TreeDSDOM.TreeDSDOM(mockTreeDS);
 
-        treeDSDOM.TreeDSDOM();
-        console.info(treeDSDOM); //con't build here
+        treeDSDOM.drawTree(mockTreeDS.root,null);
+        // console.info(treeDSDOM); //con't build here
     </script>
 </html>
