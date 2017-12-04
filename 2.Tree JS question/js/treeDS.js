@@ -122,16 +122,17 @@ var MockTreeDS = (function(){
      *  Convert the tree array into flat array
      * @param {start of node to create the sub array from} nodeToLookFor 
      * @param {the ref array to return} retArr 
+     * @param {the depth Level for each node} depthLevel
      */
-    MockTreeDS.prototype.createflatArr = function(nodeToLookFor,retArr){
+    MockTreeDS.prototype.createflatArr = function(nodeToLookFor,retArr,depthLevel){
         
         if(nodeToLookFor === null || nodeToLookFor === undefined){
             nodeToLookFor = this.root;
         }
         // check this code
-        retArr.push({key:nodeToLookFor.key,name:nodeToLookFor.name,pid:nodeToLookFor.pid});
+        retArr.push({key:nodeToLookFor.key,name:nodeToLookFor.name,pid:nodeToLookFor.pid,depthLevel:depthLevel});
         nodeToLookFor.children.forEach(node => {
-            this.createflatArr(node,retArr);
+            this.createflatArr(node,retArr,(depthLevel+1));
         });
         
     }

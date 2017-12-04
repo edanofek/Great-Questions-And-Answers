@@ -33,11 +33,13 @@ var TreeDSDOM = (function(){
                
     };
 
-    TreeDSDOM.prototype.drawTree = function(treeDS,nodeToPutOn){
-        // var retArr = [];
-        // treeDS.createflatArr(null,retArr);
-        // console.info(retArr);
+    
+    var createLeafTemplate = function(htmlContainer){
+        
+    };
 
+    TreeDSDOM.prototype.drawTree = function(treeDS,nodeToPutOn){
+ 
         var ulElem = doc.createElement('ul');
         var liElem = doc.createElement('li');
         var leafName = doc.createTextNode(treeDS.name);
@@ -57,6 +59,37 @@ var TreeDSDOM = (function(){
             }
 
         }
+ 
+    };
+
+    TreeDSDOM.prototype.drawTreeFromFlatArray = function(treeDS,nodeToPutOn){
+
+        var flatArr = [];
+        var currentDepthLevel = 0;
+        treeDS.createflatArr(null,flatArr,0);
+ 
+        if(nodeToPutOn === undefined || nodeToPutOn === null){
+            nodeToPutOn = doc.getElementById("main");
+        }
+        nodeToPutOn.innerHTML+="<ul>";
+
+        for(var ind=0;ind<flatArr.length;ind++){
+
+            if(currentDepthLevel < flatArr[ind].depthLevel){
+                currentDepthLevel = flatArr[ind].depthLevel;
+                nodeToPutOn.innerHTML+="<ul>";
+            }
+
+            nodeToPutOn.innerHTML+="<li>"+flatArr[ind].name+"</li>";
+
+            if(currentDepthLevel > flatArr[ind].depthLevel){
+                currentDepthLevel = flatArr[ind].depthLevel;
+                nodeToPutOn.innerHTML+="</ul>";
+            }
+
+
+        }
+        nodeToPutOn.innerHTML+="</ul>";
  
     };
 
