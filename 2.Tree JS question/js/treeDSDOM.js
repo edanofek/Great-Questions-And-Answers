@@ -65,32 +65,40 @@ var TreeDSDOM = (function(){
     TreeDSDOM.prototype.drawTreeFromFlatArray = function(treeDS,nodeToPutOn){
 
         var flatArr = [];
-        var currentDepthLevel = 0;
+        var currentDepthLevel = 0,compULElems = 0;
+        var ind;
+
         treeDS.createflatArr(null,flatArr,0);
  
         if(nodeToPutOn === undefined || nodeToPutOn === null){
             nodeToPutOn = doc.getElementById("main");
         }
-        nodeToPutOn.innerHTML+="<ul>";
+        nodeToPutOn.innerText+="<ul>";
 
-        for(var ind=0;ind<flatArr.length;ind++){
+        for(ind=0;ind<flatArr.length;ind++){
 
             if(currentDepthLevel < flatArr[ind].depthLevel){
                 currentDepthLevel = flatArr[ind].depthLevel;
-                nodeToPutOn.innerHTML+="<ul>";
+                nodeToPutOn.innerText+="<ul>";
+                compULElems++;
             }
-
-            nodeToPutOn.innerHTML+="<li>"+flatArr[ind].name+"</li>";
-
+            
             if(currentDepthLevel > flatArr[ind].depthLevel){
                 currentDepthLevel = flatArr[ind].depthLevel;
-                nodeToPutOn.innerHTML+="</ul>";
+                compULElems--;
+                nodeToPutOn.innerText+="</ul>";
             }
-
+            
+            nodeToPutOn.innerText+="<li>"+flatArr[ind].name+"</li>";
 
         }
-        nodeToPutOn.innerHTML+="</ul>";
- 
+
+        for(ind=0; ind < compULElems;ind++){
+            nodeToPutOn.innerText+="</ul>";
+        }
+
+        nodeToPutOn.innerText+="</ul>";
+        nodeToPutOn.innerHTML = nodeToPutOn.innerText;
     };
 
     return {
