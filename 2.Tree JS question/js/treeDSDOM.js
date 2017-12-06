@@ -5,7 +5,7 @@ var TreeDSDOM = (function(){
     };
 
     var doc = window.document;
-
+    var refTreeDS ;
     // create mock insert method - for basic tree
     var mockCreateTree = function(treeDS){
 
@@ -33,21 +33,31 @@ var TreeDSDOM = (function(){
                
     };
 
+    TreeDSDOM.prototype.addNewNode = function(node){
+        alert(node);
+        if(refTreeDS!==undefined && refTreeDS!==null){
+            var flatArr = [];
+            refTreeDS.createflatArr(null,flatArr,0);
+            refTreeDS.insert('new node',[],flatArr.length,node.pid);
+            this.drawTreeFromFlatArray(refTreeDS,null);
+        }
+
+       
+    }
+
+    TreeDSDOM.prototype.removeNode = function(node){
+        alert(node);
+        if(refTreeDS!==undefined && refTreeDS!==null){
+            
+            refTreeDS.delete(node.id);
+        }
+    }
     
     var createLeafTemplate = function(node){
         
-        var plusButton = doc.createElement('button');
-        var minusButton = doc.createElement('button');
-
-        plusButton.id = "plus";
-        plusButton.innerText ="add child";
-        minusButton.id ="minus";
-        minusButton.innerText = "remove child";
-        
-        // create buttons with add click event method
         var tempalteText = "<li><div>"+node.name+
-        "<br/><button >add to "+node.name+
-        " child</button><button >remove "+node.name+
+        "<br/><button id='add_node"+node.id+"' >add to "+node.name+
+        " child</button><button id='remove_node"+node.id+"' >remove "+node.name+
         "</button></div></li>";
 
         return tempalteText;
@@ -55,6 +65,7 @@ var TreeDSDOM = (function(){
 
     TreeDSDOM.prototype.drawTree = function(treeDS,nodeToPutOn){
  
+        refTreeDS = treeDS;
         var ulElem = doc.createElement('ul');
         var liElem = doc.createElement('li');
         var leafName = doc.createTextNode(treeDS.name);
@@ -83,8 +94,9 @@ var TreeDSDOM = (function(){
         var currentDepthLevel = 0,compULElems = 0;
         var ind;
 
+        refTreeDS = treeDS;
         treeDS.createflatArr(null,flatArr,0);
- 
+
         if(nodeToPutOn === undefined || nodeToPutOn === null){
             nodeToPutOn = doc.getElementById("main");
         }
@@ -105,8 +117,7 @@ var TreeDSDOM = (function(){
             }
             
             nodeToPutOn.innerText+= createLeafTemplate(flatArr[ind]);
-            // "<li>"+flatArr[ind].name+"</li>";
-
+            
         }
 
         for(ind=0; ind < compULElems;ind++){
