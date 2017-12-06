@@ -34,8 +34,23 @@ var TreeDSDOM = (function(){
     };
 
     
-    var createLeafTemplate = function(htmlContainer){
+    var createLeafTemplate = function(node){
         
+        var plusButton = doc.createElement('button');
+        var minusButton = doc.createElement('button');
+
+        plusButton.id = "plus";
+        plusButton.innerText ="add child";
+        minusButton.id ="minus";
+        minusButton.innerText = "remove child";
+        
+        // create buttons with add click event method
+        var tempalteText = "<li><div>"+node.name+
+        "<br/><button >add to "+node.name+
+        " child</button><button >remove "+node.name+
+        "</button></div></li>";
+
+        return tempalteText;
     };
 
     TreeDSDOM.prototype.drawTree = function(treeDS,nodeToPutOn){
@@ -89,7 +104,8 @@ var TreeDSDOM = (function(){
                 nodeToPutOn.innerText+="</ul>";
             }
             
-            nodeToPutOn.innerText+="<li>"+flatArr[ind].name+"</li>";
+            nodeToPutOn.innerText+= createLeafTemplate(flatArr[ind]);
+            // "<li>"+flatArr[ind].name+"</li>";
 
         }
 
