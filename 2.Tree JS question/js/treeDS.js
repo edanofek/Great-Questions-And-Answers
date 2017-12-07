@@ -28,10 +28,6 @@ var MockTreeDS = (function(){
      */
     var findNodeByID = function(nodeToStartLookFrom,nodeID){
 
-        // Don't think this code needed
-        // if(nodeToStartLookFrom.key === nodeID)
-        //     return nodeToStartLookFrom;
-        
         for(var ind=0;ind<nodeToStartLookFrom.children.length;ind++){
             if(nodeToStartLookFrom.children[ind].key === nodeID){
                 return nodeToStartLookFrom.children[ind];
@@ -89,19 +85,20 @@ var MockTreeDS = (function(){
 
         var selectedNode = findNodeByID(this.root,key);
 
-        for(var ind =0; ind < selectedNode.children.length; ind ++){
-            this.delete(selectedNode.children[ind].key);
+        if(selectedNode!==null && selectedNode!==undefined){
+            
+            for(var ind =0; ind < selectedNode.children.length; ind ++){
+                this.delete(selectedNode.children[ind].key);
+            }
+    
+            var parentSelectedNode = findNodeByID(this.root,selectedNode.pid);
+    
+            selectedNode.children=[];
+            selectedNode.name="";
+            selectedNode.key=-1;
+    
+            selectedNode.pid=-1;
         }
-
-        var parentSelectedNode = findNodeByID(this.root,selectedNode.pid);
-
-        selectedNode.children=[];
-        selectedNode.name="";
-        selectedNode.key=-1;
-
-        selectedNode.pid=-1;
-
-        parentSelectedNode.children = [];
         
     };
 
@@ -129,10 +126,12 @@ var MockTreeDS = (function(){
         if(nodeToLookFor === null || nodeToLookFor === undefined){
             nodeToLookFor = this.root;
         }
-        // check this code
+        
         retArr.push({key:nodeToLookFor.key,name:nodeToLookFor.name,pid:nodeToLookFor.pid,depthLevel:depthLevel});
         nodeToLookFor.children.forEach(node => {
-            this.createflatArr(node,retArr,(depthLevel+1));
+            if(node.key > 0){
+                this.createflatArr(node,retArr,(depthLevel+1));
+            }
         });
         
     }

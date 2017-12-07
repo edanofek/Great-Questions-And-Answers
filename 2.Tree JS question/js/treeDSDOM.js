@@ -10,10 +10,10 @@ var TreeDSDOM = (function(){
     var mockCreateTree = function(treeDS){
 
         treeDS.insert('root',[],1,0);
-        treeDS.insert('a',[],1,0);
-        treeDS.insert('c',[],3,1);
-        treeDS.insert('b',[],2,0);
-        treeDS.insert('d',[],4,2);
+        treeDS.insert('a',[],2,1);
+        treeDS.insert('c',[],3,2);
+        treeDS.insert('b',[],4,1);
+        treeDS.insert('d',[],5,4);
         
     };
 
@@ -34,32 +34,44 @@ var TreeDSDOM = (function(){
     };
 
     TreeDSDOM.prototype.addNewNode = function(node){
-        alert(node);
+        
         if(refTreeDS!==undefined && refTreeDS!==null){
             var flatArr = [];
             refTreeDS.createflatArr(null,flatArr,0);
-            refTreeDS.insert('new node',[],flatArr.length,node.pid);
+            refTreeDS.insert('new node',[],flatArr.length,node.key);
             this.drawTreeFromFlatArray(refTreeDS,null);
         }
 
-       
     }
 
     TreeDSDOM.prototype.removeNode = function(node){
-        alert(node);
+        
         if(refTreeDS!==undefined && refTreeDS!==null){
-            
-            refTreeDS.delete(node.id);
+            refTreeDS.delete(node.key);
+            var flatArr = [];
+            refTreeDS.createflatArr(null,flatArr,0);
+            this.drawTreeFromFlatArray(refTreeDS,null);
         }
     }
     
+    var createEvnetListener = function(node){
+        doc.getElementById("add_node_"+node.key).addEventListener("click",function(){
+            TreeDSDOM.prototype.addNewNode(node);
+        });
+
+        doc.getElementById("remove_node_"+node.key).addEventListener("click",function(){
+            TreeDSDOM.prototype.removeNode(node);
+        });
+
+    }
+
     var createLeafTemplate = function(node){
         
         var tempalteText = "<li><div>"+node.name+
-        "<br/><button id='add_node"+node.id+"' >add to "+node.name+
-        " child</button><button id='remove_node"+node.id+"' >remove "+node.name+
+        "<br/><button id='add_node_"+node.key+"' >add to "+node.name+
+        " child</button><button id='remove_node_"+node.key+"' >remove "+node.name+
         "</button></div></li>";
-
+    
         return tempalteText;
     };
 
@@ -92,7 +104,7 @@ var TreeDSDOM = (function(){
 
         var flatArr = [];
         var currentDepthLevel = 0,compULElems = 0;
-        var ind;
+        var ind,finHtmlText="";
 
         refTreeDS = treeDS;
         treeDS.createflatArr(null,flatArr,0);
@@ -100,23 +112,23 @@ var TreeDSDOM = (function(){
         if(nodeToPutOn === undefined || nodeToPutOn === null){
             nodeToPutOn = doc.getElementById("main");
         }
-        nodeToPutOn.innerText+="<ul>";
+        finHtmlText+="<ul>";
 
         for(ind=0;ind<flatArr.length;ind++){
 
             if(currentDepthLevel < flatArr[ind].depthLevel){
                 currentDepthLevel = flatArr[ind].depthLevel;
-                nodeToPutOn.innerText+="<ul>";
+                finHtmlText+="<ul>";
                 compULElems++;
             }
             
             if(currentDepthLevel > flatArr[ind].depthLevel){
                 currentDepthLevel = flatArr[ind].depthLevel;
                 compULElems--;
-                nodeToPutOn.innerText+="</ul>";
+                finHtmlText+="</ul>";
             }
             
-            nodeToPutOn.innerText+= createLeafTemplate(flatArr[ind]);
+            finHtmlText+= createLeafTemplate(flatArr[ind]);
             
         }
 
@@ -124,8 +136,13 @@ var TreeDSDOM = (function(){
             nodeToPutOn.innerText+="</ul>";
         }
 
-        nodeToPutOn.innerText+="</ul>";
-        nodeToPutOn.innerHTML = nodeToPutOn.innerText;
+        finHtmlText+="</ul>";
+        nodeToPutOn.innerHTML = finHtmlText;
+
+        for(ind=0;ind<flatArr.length;ind++){
+            createEvnetListener(flatArr[ind]);
+        }
+
     };
 
     return {

@@ -51,7 +51,7 @@ QUnit.test("test delete all nodes for branch",function(assert){
     mockTreeDS.insert('d',[],4,3);
     mockTreeDS.delete(3);
 
-    assert.equal(mockTreeDS.root.children[0].children.length,0,"mock tree length after first delete (c->d - delete) equal to 0");
+    assert.equal(mockTreeDS.root.children[0].children.length,1,"mock tree length after first delete (c->d - delete) equal to 0");
     assert.equal(mockTreeDS.root.children.length,2,"mock tree length equal 2 for root children");
     
 
