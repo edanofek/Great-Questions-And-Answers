@@ -6,7 +6,7 @@ var TreeDSDOM = (function(){
 
     var doc = window.document;
     var refTreeDS ;
-    // create mock insert method - for basic tree
+    // create mock insert method - for basic tree with 2 children
     var mockCreateTree = function(treeDS){
 
         treeDS.insert('root',[],1,0);
