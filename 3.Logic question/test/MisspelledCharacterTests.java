@@ -24,8 +24,8 @@ public class MisspelledCharacterTests {
     @Test
     public void testCreateMisspelledTree(){
 
-        TreeSet<String> mockTreeSet = _misspelledCharacter.createMisspelledTree(mockString);
-        Assert.assertEquals("First latter of tree set is 'A'",mockTreeSet.first().toString(), "A");
+        BinarySearchTree mockBinarySearchTree = _misspelledCharacter.createMisspelledTree(mockString);
+        Assert.assertEquals("First latter of tree set is 'A'",mockBinarySearchTree..toString(), "A");
         Assert.assertEquals("Size of Tree is one",mockTreeSet.size(), 1);
 
     }
