@@ -1,5 +1,5 @@
+import java.time.DayOfWeek;
 
-// import node
 public class BinarySearchTree {
 	public static  Node root;
 	public BinarySearchTree(){
@@ -99,9 +99,10 @@ public class BinarySearchTree {
 			successsor.right = deleleNode.right;
 		}
 		return successsor;
-	}
-	public void insert(char id){
-		Node newNode = new Node(id);
+    }
+   
+	public void insert(char data,char latterToSearch,char latterToSwitch){
+		Node newNode = new Node(data);
 		if(root==null){
 			root = newNode;
 			return;
@@ -110,18 +111,17 @@ public class BinarySearchTree {
 		Node parent = null;
 		while(true){
 			parent = current;
-			if(id<current.data){				
-				current = current.left;
-				if(current==null){
-					parent.left = newNode;
-					return;
-				}
+			if(data == latterToSearch){
+				current = current.right;
+				parent.right = newNode;
+				Node nodeLatterToSwitch = new Node(latterToSwitch);
+				parent.left = nodeLatterToSwitch;
+				return;
+
 			}else{
 				current = current.right;
-				if(current==null){
-					parent.right = newNode;
-					return;
-				}
+				parent.right = newNode;
+				return;
 			}
 		}
 	}
