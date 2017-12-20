@@ -125,6 +125,9 @@ public class BinarySearchTree {
 			}
 		}
 	}
+	public void buildSBTWithSwitchLatter(String buildStringTree,char latterToSearch,char latterToSwitch){
+		// con't here
+	}
 	public void display(Node root){
 		if(root!=null){
 			display(root.left);
