@@ -1,7 +1,6 @@
-import java.time.DayOfWeek;
 
 public class BinarySearchTree {
-	public static  Node root;
+	public  Node root;
 	public BinarySearchTree(){
 		this.root = null;
 	}
@@ -93,7 +92,7 @@ public class BinarySearchTree {
 		}
 		//check if successor has the right child, it cannot have left child for sure
 		// if it does have the right child, add it to the left of successorParent.
-//		successsorParent
+	//		successsorParent
 		if(successsor!=deleleNode.right){
 			successsorParent.left = successsor.right;
 			successsor.right = deleleNode.right;
@@ -125,8 +124,35 @@ public class BinarySearchTree {
 			}
 		}
 	}
-	public void buildSBTWithSwitchLatter(String buildStringTree,char latterToSearch,char latterToSwitch){
-		// con't here
+	public void buildSBTWithSwitchLatter(Node current,String buildStringTree,char latterToSearch,char latterToSwitch){
+		
+		char data = buildStringTree.substring(0, 1).charAt(0);
+		String subStrTree = buildStringTree.substring(1,buildStringTree.length()-1);
+
+		Node newNode = new Node(data);
+		if(current==null){
+			root = newNode;
+			buildSBTWithSwitchLatter(root,subStrTree, latterToSearch, latterToSwitch);
+		}else{
+			// Node current = root;
+			Node parent = current;
+
+			if(subStrTree.length() > 0 ){
+				if(data == latterToSearch){
+					current = current.right;
+					parent.left = newNode;
+					buildSBTWithSwitchLatter(parent.left,subStrTree, latterToSearch, latterToSwitch);
+					Node nodeLatterToSwitch = new Node(latterToSwitch);
+					parent.right = nodeLatterToSwitch;
+					buildSBTWithSwitchLatter(parent.right,subStrTree, latterToSearch, latterToSwitch);
+				}else{
+					current = current.right;
+					parent.left = newNode;
+					buildSBTWithSwitchLatter(parent.left,subStrTree, latterToSearch, latterToSwitch);
+				}
+			}
+		}
+		//end of recursion 
 	}
 	public void display(Node root){
 		if(root!=null){
