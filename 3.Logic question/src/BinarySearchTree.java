@@ -127,7 +127,9 @@ public class BinarySearchTree {
 	public void buildSBTWithSwitchLatter(Node current,String buildStringTree,char latterToSearch,char latterToSwitch){
 		
 		char data = buildStringTree.substring(0, 1).charAt(0);
-		String subStrTree = buildStringTree.substring(1,buildStringTree.length()-1);
+		String subStrTree = buildStringTree.substring(1,buildStringTree.length());
+
+		// System.out.print(" " + subStrTree);
 
 		Node newNode = new Node(data);
 		if(current==null){
@@ -137,16 +139,16 @@ public class BinarySearchTree {
 			// Node current = root;
 			Node parent = current;
 
-			if(subStrTree.length() > 0 ){
+			if(subStrTree.length() > 0){
 				if(data == latterToSearch){
-					current = current.right;
+					current = current.left;
 					parent.left = newNode;
 					buildSBTWithSwitchLatter(parent.left,subStrTree, latterToSearch, latterToSwitch);
 					Node nodeLatterToSwitch = new Node(latterToSwitch);
 					parent.right = nodeLatterToSwitch;
 					buildSBTWithSwitchLatter(parent.right,subStrTree, latterToSearch, latterToSwitch);
 				}else{
-					current = current.right;
+					current = current.left;
 					parent.left = newNode;
 					buildSBTWithSwitchLatter(parent.left,subStrTree, latterToSearch, latterToSwitch);
 				}
@@ -154,11 +156,23 @@ public class BinarySearchTree {
 		}
 		//end of recursion 
 	}
-	public void display(Node root){
+	public void displayAll(Node root){
 		if(root!=null){
-			display(root.left);
+			displayAll(root.left);
 			System.out.print(" " + root.data);
-			display(root.right);
+			displayAll(root.right);
+		}
+	}
+	public void displayLeft(Node root){
+		if(root!=null){
+			displayLeft(root.left);
+			System.out.print(" " + root.data);
+		}
+	}
+	public void displayRight(Node root){
+		if(root!=null){
+			System.out.print(" " + root.data);
+			displayRight(root.right);
 		}
 	}
 

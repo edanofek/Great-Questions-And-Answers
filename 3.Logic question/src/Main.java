@@ -8,10 +8,11 @@ public class Main {
 		char latterToSearch = 'X',
 		latterToSwitch = 'T';
 
-		String buildStringTree="ABCTXTAXXS";
+		String buildStringTree="ABCTXTAXXSA";
 
 		bst.buildSBTWithSwitchLatter(null, buildStringTree, latterToSearch, latterToSwitch);
-		bst.display(bst.root);
+		bst.displayAll(bst.root);
+
 	}
 
 }
