@@ -7,3 +7,5 @@ bin/*
 *.project
 .project
 *.class
+.idea
+.vscode
