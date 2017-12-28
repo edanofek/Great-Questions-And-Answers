@@ -9,3 +9,5 @@ bin/*
 *.class
 .idea
 .vscode
+*/.settings
+.settings
