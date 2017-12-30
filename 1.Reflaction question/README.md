@@ -77,7 +77,7 @@ The output of your utility when run on instance p above should be something like
     Object of Class "Person"
 
     ----------------------------------------
-    age = 35
+    age = 31
     name =  
 
                  Object of Class "Name"
