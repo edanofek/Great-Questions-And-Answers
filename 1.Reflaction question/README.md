@@ -3,7 +3,8 @@
 	Great interview question about reflection.
 	--------------------------------------------
 
-	Implement a utility that will use Java reflection APIs to print "struct" objects. These "structs" are defined as follows:
+	Implement a utility that will use reflection APIs to print "struct" objects. 
+	These "structs" are defined as follows:
 
 o   They have only public attributes
 
@@ -15,11 +16,8 @@ o   Each attribute can be of the following types:
 
 ·         Primitive (e.g. int), primitive wrapper (e.g. Integer) or String
 
- 
 
 The program should navigate the object structure and print the structure.
-
- 
 
  
 
