@@ -1,10 +1,13 @@
-var DOMEquality = (function(){
+var DOMEqualityES5 = (function(){
 
-    
-
-    return {
+    var Holder
+    var DOMEqualityES5 = function(){
 
     }
 
-});
+    return {
+        DOMEqualityES5.
+    }
+
+})();
 
