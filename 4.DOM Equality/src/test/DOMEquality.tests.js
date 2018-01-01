@@ -15,26 +15,38 @@ QUnit.test("declare DOMEquality instance", function( assert ) {
 });
 QUnit.test("test DOMEquality areEqual(element1, element2) method", function( assert ) {
 
+    // Mock Elem 1
+    /* <div>
+    <img/>
+    <span/>
+    <div>
+    <img/>
+    </div>
+    </div> */
+
+    // Mock Elem 2
+    /* <div>
+    <img/>
+    <img/>
+    <span>
+    <div/>
+    </span>
+    </div> */
+
     var areEqual = new DOMEquality.DOMEquality().areEqual;
-    var mockElem1 = document.createElement("div").appendChild("img");
-    // var mockElemDiv1 = document.createElement("");  
+    
+    var mockElemDiv1 = document.createElement("div");
+    mockElemDiv1.appendChild("img");  
+    mockElemDiv1.appendChild("span");  
+    mockElemDiv1.appendChild("div").appendChild("img");
 
-{/* <div>
-<img/>
-<span/>
-<div>
-<img/>
-</div>
-</div> */}
+    var mockElemDiv2 = document.createElement("div");
+    mockElemDiv2.appendChild("img");
+    mockElemDiv2.appendChild("img");
+    mockElemDiv2.appendChild("span").appendChild("div");
 
-{/* <div>
-<img/>
-<img/>
-<span>
-<div/>
-</span>
-</div> */}
+    var mockElemDiv3 = document.createElement("div").appendChild("span");
 
-    assert.ok( areEqual(mockElem1,mockElem2) === true 
-        ,"DOMEquality instance is declared");
+    assert.equal(areEqual(mockElemDiv1,mockElemDiv2),true ,"are equal method is true for elem 1,elem 2");
+    assert.ok(areEqual(mockElem1,mockElemDiv3), false ,"are equal method is false for elem 1,elem 3");
 });
