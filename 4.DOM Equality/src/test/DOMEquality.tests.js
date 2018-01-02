@@ -2,15 +2,16 @@
     DOMEquality unit tests
 
     Tests:
-    1.Check areEqual(element1, element2) method
+    1.Check areEqual(element1, element2) method {output : true,false}
  */
 
 
 QUnit.test("declare DOMEquality instance", function( assert ) {
-    var _DOMEquality = new DOMEquality.DOMEquality();
+    
+    var _DOMEqualityES5 = new DOMEqualityES5.DOMEqualityES5();
 
-    assert.ok(_DOMEquality !== null 
-        && _DOMEquality !==undefined
+    assert.ok(_DOMEqualityES5 !== null 
+        && _DOMEqualityES5 !==undefined
         ,"DOMEquality instance is declared");
 });
 QUnit.test("test DOMEquality areEqual(element1, element2) method", function( assert ) {
@@ -33,7 +34,9 @@ QUnit.test("test DOMEquality areEqual(element1, element2) method", function( ass
     </span>
     </div> */
 
-    var areEqual = new DOMEquality.DOMEquality().areEqual;
+    var areEqual = new DOMEqualityES5.DOMEqualityES5();
+    var buildHolderTAGSDS = new DOMEqualityES5.DOMEqualityES5();
+    
     
     var mockElemDiv1 = document.createElement("div");
     mockElemDiv1.appendChild(document.createElement("img"));  
@@ -46,6 +49,9 @@ QUnit.test("test DOMEquality areEqual(element1, element2) method", function( ass
     mockElemDiv2.appendChild(document.createElement("span")).appendChild(document.createElement("div"));
 
     var mockElemDiv3 = document.createElement("div").appendChild(document.createElement("span"));
+
+    buildHolderTAGSDS.buildHolderTAGSDS(mockElemDiv1);
+    buildHolderTAGSDS.printHolderTAGSDS();
 
     assert.equal(areEqual(mockElemDiv1,mockElemDiv2),true ,"are equal method is true for elem 1,elem 2");
     assert.ok(areEqual(mockElem1,mockElemDiv3), false ,"are equal method is false for elem 1,elem 3");
