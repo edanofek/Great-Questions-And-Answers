@@ -50,8 +50,13 @@ QUnit.test("test DOMEquality areEqual(element1, element2) method", function( ass
 
     var mockElemDiv3 = document.createElement("div").appendChild(document.createElement("span"));
 
-    buildHolderTAGSDS.buildHolderTAGSDS(mockElemDiv1);
-    buildHolderTAGSDS.printHolderTAGSDS();
+    var HolderTAGSDS1 = Object.create(null),HolderTAGSDS2 = Object.create(null);
+    buildHolderTAGSDS.buildHolderTAGSDS(mockElemDiv1,HolderTAGSDS1);
+    buildHolderTAGSDS.buildHolderTAGSDS(mockElemDiv2,HolderTAGSDS2);
+
+    // console.info(HolderTAGSDS1);
+    // console.info(HolderTAGSDS2);
+    
 
     assert.equal(areEqual(mockElemDiv1,mockElemDiv2),true ,"are equal method is true for elem 1,elem 2");
     assert.ok(areEqual(mockElem1,mockElemDiv3), false ,"are equal method is false for elem 1,elem 3");
