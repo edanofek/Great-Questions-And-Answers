@@ -22,6 +22,15 @@
 		</span>
 	</div>
 
+	Step 1
 	Please implement the following function:
 		function areEqual(element1, element2)
 	Which returns true when the elements are DOM Equal
+
+	Step 2
+	Given an element, please implement the following function:
+		function equalElements(element)
+		Which returns all the equality groups.
+		Equality group is defined as a list of all descendant elements which
+		are DOM Equal
+		[[elem1, elem2], …]

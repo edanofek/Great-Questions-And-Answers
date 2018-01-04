@@ -34,30 +34,52 @@ QUnit.test("test DOMEquality areEqual(element1, element2) method", function( ass
     </span>
     </div> */
 
-    var areEqual = new DOMEqualityES5.DOMEqualityES5();
-    var buildHolderTAGSDS = new DOMEqualityES5.DOMEqualityES5();
+    var mockElemDiv1 = document.createElement("div");
+    mockElemDiv1.appendChild(document.createElement("img"));  
+    mockElemDiv1.appendChild(document.createElement("span"));  
+    mockElemDiv1.appendChild(document.createElement("div")).appendChild(document.createElement("img"));
     
+    var mockElemDiv2 = document.createElement("div");
+    mockElemDiv2.appendChild(document.createElement("img"));
+    mockElemDiv2.appendChild(document.createElement("img"));
+    mockElemDiv2.appendChild(document.createElement("span")).appendChild(document.createElement("div"));
+    
+    var mockElemDiv3 = document.createElement("div").appendChild(document.createElement("span"));
+
+    var areEqual = new DOMEqualityES5.DOMEqualityES5();
+    
+    var HolderTAGSDS1 = Object.create(null),HolderTAGSDS2 = Object.create(null);
+
+
+    assert.equal(areEqual.areEqual(mockElemDiv1,mockElemDiv2),true ,"are equal method is true for elem 1,elem 2");
+    assert.equal(areEqual.areEqual(mockElemDiv2,mockElemDiv1),true ,"are equal method is true for elem 2,elem 1");
+    assert.equal(areEqual.areEqual(mockElemDiv2,mockElemDiv2),true ,"are equal method is true for elem 2,elem 2");
+    assert.equal(areEqual.areEqual(mockElemDiv1,mockElemDiv3), false ,"are equal method is false for elem 1,elem 3");
+    assert.equal(areEqual.areEqual(mockElemDiv2,mockElemDiv3), false ,"are equal method is false for elem 2,elem 3");
+    assert.equal(areEqual.areEqual(mockElemDiv3,mockElemDiv1), false ,"are equal method is false for elem 3,elem 1");
+});
+
+QUnit.test("test DOMEquality equalElements(element) method", function( assert ) {
     
     var mockElemDiv1 = document.createElement("div");
     mockElemDiv1.appendChild(document.createElement("img"));  
     mockElemDiv1.appendChild(document.createElement("span"));  
     mockElemDiv1.appendChild(document.createElement("div")).appendChild(document.createElement("img"));
-
+    
     var mockElemDiv2 = document.createElement("div");
     mockElemDiv2.appendChild(document.createElement("img"));
     mockElemDiv2.appendChild(document.createElement("img"));
     mockElemDiv2.appendChild(document.createElement("span")).appendChild(document.createElement("div"));
-
+    
     var mockElemDiv3 = document.createElement("div").appendChild(document.createElement("span"));
+    
+    var mockContainer =  document.createElement("div");
+    mockContainer.appendChild(mockElemDiv1);
+    mockContainer.appendChild(mockElemDiv2);
+    mockContainer.appendChild(mockElemDiv3);
 
-    var HolderTAGSDS1 = Object.create(null),HolderTAGSDS2 = Object.create(null);
-    buildHolderTAGSDS.buildHolderTAGSDS(mockElemDiv1,HolderTAGSDS1);
-    buildHolderTAGSDS.buildHolderTAGSDS(mockElemDiv2,HolderTAGSDS2);
-
-    // console.info(HolderTAGSDS1);
-    // console.info(HolderTAGSDS2);
+    var equalElements = new DOMEqualityES5.DOMEqualityES5();
+    assert.equal(equalElements.equalElements(mockContainer).length === 1,true ,"equalElements method is true for [[elem1, elem2]]");
     
 
-    assert.equal(areEqual(mockElemDiv1,mockElemDiv2),true ,"are equal method is true for elem 1,elem 2");
-    assert.ok(areEqual(mockElem1,mockElemDiv3), false ,"are equal method is false for elem 1,elem 3");
 });
