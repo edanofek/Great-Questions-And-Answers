@@ -2,7 +2,8 @@
     DOMEquality unit tests
 
     Tests:
-    1.Check areEqual(element1, element2) method {output : true,false}
+    1.test areEqual(element1, element2) method {output : true,false} method
+    2.test equalElements(element) method {output : [[elem1, elem2],...]}
  */
 
 

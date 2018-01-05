@@ -4,3 +4,4 @@
 	2.Great Quesion About trees / flat arrays in ES5.1.
 	3.Great Quesion about misspelled latters.
 	4.Great Question DOM logic checking.
+	5.Great Question Eliminate inline-styles.
