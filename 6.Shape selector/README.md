@@ -9,5 +9,4 @@ shape should be selected.
 
 
 Step 2:
-Add another group and two buttons as shown in the following
-layout:
+Add another group and two buttons with the option to move shapes between the container. 
