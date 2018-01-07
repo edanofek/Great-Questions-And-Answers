@@ -5,4 +5,4 @@
 	3.Great Quesion about misspelled latters.
 	4.Great Question DOM logic checking.
 	5.Great Question Eliminate inline-styles.
-	6.Great Question about creating html/css/js template.
+	6.Great Question about creating html/css/js template called "Shape selector".
