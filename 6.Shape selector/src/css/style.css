@@ -4,6 +4,26 @@
 }
 
 
+ul{
+    float: left;
+}
+li{
+    display: block;
+    width: 100%;
+    
+    margin: 5px 0;
+    text-align: center;
+}
+
 .shapeContainer{
- background-color: lightgray;   
+    margin: 20px;
+    background-color: lightgray;   
+    height: 300px;
+    float: left;
+    padding: 5px;
+    overflow-y: scroll;
+}
+   
+.outline_selected{
+    outline: 5px solid whitesmoke;    
 }

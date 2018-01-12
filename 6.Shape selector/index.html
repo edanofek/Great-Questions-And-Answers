@@ -9,11 +9,17 @@
     <body>
        
        <aside class="shapeContainer">	
-            <!-- Cont here -->
+            
         </aside>
+
         <script type="text/javascript">
-            var _ShapeSelector = new ShapeSelector.ShapeSelector();
-            _ShapeSelector.initFN(true);
+            var _ImageHolderContianer = new ImageHolderContianer.ImageHolderContianer(1);
+            _ImageHolderContianer.addImages();
+            // console.info(_ImageHolderContianer.imageHolderDS);
+
+            var _ShapeSelector = new ShapeSelector.ShapeSelector(1,_ImageHolderContianer.imageHolderDS);
+            _ShapeSelector.drawContainer(document.getElementsByClassName('shapeContainer')[0]);
+
         </script>
     </body>
 </html>
