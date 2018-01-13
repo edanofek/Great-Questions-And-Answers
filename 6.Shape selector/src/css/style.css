@@ -10,20 +10,20 @@ ul{
 li{
     display: block;
     width: 100%;
-    
+    padding: 5px;
     margin: 25px 0;
     text-align: center;
 }
 
 .shapeContainer{
-    margin: 20px;
+    margin: 10px;
     background-color: lightgray;   
-    height: 400px;
+    height: 420px;
     float: left;
-    padding: 5px;
+    padding: 20px;
     overflow-y: scroll;
 }
    
 .outline_selected{
-    outline: 5px solid whitesmoke;    
+    outline: 1px solid whitesmoke;    
 }

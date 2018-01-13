@@ -18,7 +18,8 @@ var ImageHolderContianer = (function(){
             this.imageHolderDS[imageName]=
                     {selected:selected ? true : false,
                     loadedImageElem:loadedImage,
-                    shapeSelectorID:shapeSelectorID};
+                    shapeSelectorID:shapeSelectorID
+                };
             
         }
 
@@ -41,7 +42,6 @@ var ImageHolderContianer = (function(){
 // Shape Selector Class
 var ShapeSelector = (function(){
 
-    // Cto'r 
     var ShapeSelector = function(shapeSelectorID,imageHolderDS){
         this.shapeSelectorID = shapeSelectorID;
         this.imageHolderDS = imageHolderDS;
@@ -56,34 +56,40 @@ var ShapeSelector = (function(){
             }
         }
         
+        var changeStyleOfSelectedLI = function(){
+            for (var keyT in this.imageHolderDS){
+                this.imageHolderDS[keyT].selected = false;
+                document.getElementsByClassName(keyT)[0].className=keyT;
+            }
+            this.imageHolderDS[this.pressedKey].selected = true;
+            document.getElementsByClassName(this.pressedKey)[0].className +=" outline_selected";
+        }
+        
+        // Logic for drawing
         removeOldestList();
+       
+
         var ul = document.createElement("ul");
         for (var key in this.imageHolderDS) {
             var elem = this.imageHolderDS[key].loadedImageElem;
             
             var li = document.createElement("li");
+            li.className+=key;
 
-            (function(key,imageHolderDS){
+            (function(pressedKey,imageHolderDS){
                 li.addEventListener("click",function(){
-                    for (var keyT in imageHolderDS){
-                        imageHolderDS[keyT].selected = false;
-                    }
-                    imageHolderDS[key].selected = true;
-                    
+                    var objToPass = {pressedKey :pressedKey,imageHolderDS:imageHolderDS }; //pass to call function
+                    changeStyleOfSelectedLI.call(objToPass);
                 });
+            })(key,this.imageHolderDS);//IIFE to prevent refracne problem on click
 
-            })(key,this.imageHolderDS);
-
-            // Con't here - need to fix
-            if(elem.selected === true){
-                elem.class = "outline_selected";
-            }else{
-                elem.class = "";
-            }
             li.appendChild(elem);
             ul.appendChild(li);
         }
         baseElem.appendChild(ul);
+        
+        var objToPass = {pressedKey :'ellipsis',imageHolderDS:this.imageHolderDS }; //pass to call function
+        changeStyleOfSelectedLI.call(objToPass); //set first shape selected
     }
 
     return {
