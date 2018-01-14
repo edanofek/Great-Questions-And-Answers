@@ -45,6 +45,13 @@ var ShapeSelector = (function(){
     var ShapeSelector = function(shapeSelectorID,imageHolderDS){
         this.shapeSelectorID = shapeSelectorID;
         this.imageHolderDS = imageHolderDS;
+
+        var title = document.createElement("h3");
+        title.innerHTML = "Group "+shapeSelectorID;
+        
+
+        document.getElementsByClassName("shapeContainer")[0]
+        .parentNode.appendChild(title);
     }
 
     ShapeSelector.prototype.drawContainer = function(baseElem){
