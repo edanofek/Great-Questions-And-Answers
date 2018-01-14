@@ -51,7 +51,7 @@ var ShapeSelector = (function(){
         
 
         document.getElementsByClassName("shapeContainer")[0]
-        .parentNode.appendChild(title);
+        .parentNode.insertAdjacentElement('afterbegin',title);
     }
 
     ShapeSelector.prototype.drawContainer = function(baseElem){
