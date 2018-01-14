@@ -10,16 +10,26 @@
        
        <aside class="shapeContainer">	
             
+       </aside>
+       <aside class="buttonsContainer">	
+            
         </aside>
+
+       <aside class="shapeContainer">	
+            
+        </aside>
+
 
         <script type="text/javascript">
             var _ImageHolderContianer = new ImageHolderContianer.ImageHolderContianer(1);
             _ImageHolderContianer.addImages();
-            // console.info(_ImageHolderContianer.imageHolderDS);
 
-            var _ShapeSelector = new ShapeSelector.ShapeSelector(1,_ImageHolderContianer.imageHolderDS);
-            _ShapeSelector.drawContainer(document.getElementsByClassName('shapeContainer')[0]);
+            var _ShapeSelectorFirst = new ShapeSelector.ShapeSelector(1,_ImageHolderContianer.imageHolderDS);
+            _ShapeSelectorFirst.drawContainer(document.getElementsByClassName('shapeContainer')[0]);
 
+            var _ShapeSelectorSec = new ShapeSelector.ShapeSelector(2,_ImageHolderContianer.imageHolderDS);
+            _ShapeSelectorSec.drawContainer(document.getElementsByClassName('shapeContainer')[1]);
+            
         </script>
     </body>
 </html>
