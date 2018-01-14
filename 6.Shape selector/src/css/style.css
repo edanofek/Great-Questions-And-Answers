@@ -15,11 +15,27 @@ li{
     text-align: center;
 }
 
+aside{
+    min-width: 200px;
+}
+
+div,.shapeContainer{
+    float: left;
+}
+
+.buttonsContainer{
+    min-width: 200px;
+    height: 420px;
+}
+
+h3{
+    text-align: center;
+    margin: 10px 0;
+}
 .shapeContainer{
     margin: 10px;
     background-color: lightgray;   
     height: 420px;
-    float: left;
     padding: 20px;
     overflow-y: scroll;
 }

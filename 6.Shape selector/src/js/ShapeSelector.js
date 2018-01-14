@@ -46,12 +46,12 @@ var ShapeSelector = (function(){
         this.shapeSelectorID = shapeSelectorID;
         this.imageHolderDS = imageHolderDS;
 
-        var title = document.createElement("h3");
-        title.innerHTML = "Group "+shapeSelectorID;
+        // var title = document.createElement("h3");
+        // title.innerHTML = "Group "+shapeSelectorID;
         
 
-        document.getElementsByClassName("shapeContainer")[0]
-        .parentNode.insertAdjacentElement('afterbegin',title);
+        document.getElementsByClassName("shapeContainerTitle")[(shapeSelectorID-1)].innerHTML = "Group "+shapeSelectorID;
+        
     }
 
     ShapeSelector.prototype.drawContainer = function(baseElem){
