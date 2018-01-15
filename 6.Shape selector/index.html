@@ -3,46 +3,53 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="src/css/style.css" />
         <script type="text/javascript" src="src/js/ShapeSelector.js" ></script>
-
         <title>Shape Selector</title>
+
     </head>
     <body>
-       <div>
-           <h3 class="shapeContainerTitle"></h3>
-           <aside class="shapeContainer">	
-                
-           </aside>
-       </div>
-
-       <!-- <div class="buttonsContainer">
-        <button  />
-            <<
-        </button>
-        <button />
-            >>
-        </button>
-       </div> -->
-       
-
-       <div>
-            <h3 class="shapeContainerTitle"></h3>
-            <aside class="shapeContainer">	
-                 
-            </aside>
-        </div>
-
+        <diV class="breakFloat">
+            <div>
+                <h3 class="shapeContainerTitle"></h3>
+                <aside class="shapeContainer">	
+                        
+                </aside>
+            </div>
+        
+            <div class="buttonsContainer">
+                <button id="moveSelectedShapeLeft" />
+                    <<
+                </button>
+                <button id="moveSelectedShapeRight"/>
+                    >>
+                </button>
+            </div>
+            
+        
+            <div>
+                <h3 class="shapeContainerTitle"></h3>
+                <aside class="shapeContainer">	
+                    
+                </aside>
+            </div>
+        </diV>
 
         <script type="text/javascript">
             
             var _ImageHolderContianer = new ImageHolderContianer.ImageHolderContianer(1);
             _ImageHolderContianer.addImages();
 
-            var _ShapeSelectorFirst = new ShapeSelector.ShapeSelector(1,_ImageHolderContianer.imageHolderDS);
-            _ShapeSelectorFirst.drawContainer(document.getElementsByClassName('shapeContainer')[0]);
+            var leftShapeSelector = document.getElementsByClassName('shapeContainer')[0];
+            var rightShapeSelector = document.getElementsByClassName('shapeContainer')[1];
 
-            var _ShapeSelectorSec = new ShapeSelector.ShapeSelector(2,_ImageHolderContianer.imageHolderDS);
-            _ShapeSelectorSec.drawContainer(document.getElementsByClassName('shapeContainer')[1]);
+            var _ShapeSelectorLeft = new ShapeSelector.ShapeSelector(1,_ImageHolderContianer.imageHolderDS);
+            _ShapeSelectorLeft.drawContainer(leftShapeSelector);
+
+            // _ImageHolderContianer.imageHolderDS
+            var _ShapeSelectorRight = new ShapeSelector.ShapeSelector(2,{});
+            _ShapeSelectorRight.drawContainer(rightShapeSelector);
             
+            var ButtonsArrows = new ButtonsArrows.ButtonsArrows(_ShapeSelectorLeft,_ShapeSelectorRight);
+
         </script>
     </body>
 </html>

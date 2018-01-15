@@ -3,6 +3,9 @@
     padding: 0;
 }
 
+body{
+    direction: ltr;
+}
 
 ul{
     float: left;
@@ -23,15 +26,26 @@ div,.shapeContainer{
     float: left;
 }
 
-.buttonsContainer{
-    min-width: 200px;
-    height: 420px;
+
+button{
+    padding: 10px;
+    display: block;
 }
 
 h3{
     text-align: center;
     margin: 10px 0;
 }
+
+.breakFloat{
+    float: none;
+    margin: 0 auto;
+}
+.buttonsContainer{
+    
+    margin-top: 200px;
+}
+
 .shapeContainer{
     margin: 10px;
     background-color: lightgray;   
