@@ -6,3 +6,4 @@
 	4.Great Question DOM logic checking.
 	5.Great Question Eliminate inline-styles.
 	6.Great Question about creating html/css/js template called "Shape selector".
+	7.Great Question about switching zeros and ones in array.
