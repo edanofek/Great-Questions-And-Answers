@@ -1,7 +1,7 @@
 "# Great-Questions-And-Answers" 
 	
 	Great Question about switching zeros and ones in array
-	------------------------------------------------------
+	--------------------------------------------------------
 
     Given an input of array filled mixed with zero and ones.
 
