@@ -7,8 +7,7 @@
 
 	Write a method that sort all the zeros to left side and all the ones to the right side of the array.
 
-	P.S.
-	Traverse on the array should happen once.
+	You need to traverse the array should only one time.
 
 	ie:
 		input : [1,0,1,0,0,1,1,0]
