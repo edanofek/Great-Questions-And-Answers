@@ -10,6 +10,6 @@
 	You need to traverse the array should only one time.
 
 	ie:
-		input : [1,0,1,0,0,1,1,0]
-		output : [0,0,0,0,1,1,1,1]
+		input : [1,0,1,0,0,1,1,0,1]
+		output : [0,0,0,0,1,1,1,1,1]
 
