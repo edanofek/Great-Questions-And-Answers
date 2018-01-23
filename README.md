@@ -7,4 +7,4 @@
 	5.Great Question Eliminate inline-styles.
 	6.Great Question about creating html/css/js template called "Shape selector".
 	7.Great Question about switching zeros and ones in array.
-	8.Great Question about "divide numbers".
+	8.Great Question about convert number to words.
