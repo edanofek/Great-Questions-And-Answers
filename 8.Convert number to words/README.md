@@ -11,6 +11,9 @@
 		input : 112
 		output : one hundred twelve.
 
+		input : 1012
+		output : one thousand twelve.
+		
 	P.S.
 		It's not necessary to use conjunctions such as "and".
 
