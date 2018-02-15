@@ -5,7 +5,7 @@
 
     Given an input of signed Intger .
 
-	Write a method that convert this number to words (return string with the number in words). 
+	Write a method that convert this number to words (return string with the number in words).
 
 	ie:
 		input : 112
