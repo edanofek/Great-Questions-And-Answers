@@ -5,10 +5,14 @@ bin/*
 .classpath
 *.classpath
 *.project
+*.idea
+*.vscode
+.vscode
+.idea
+.xml
+.json
 .project
 *.class
-.idea
-.vscode
 */.settings
 .settings
 node_modules/*
