@@ -8,8 +8,6 @@ class Main {
     private static Hashtable<Integer ,String> hundredThousend;
     private static Integer divider = 1000; 
 
-
-
     private static String convertNumberToWords(Integer  number){
        
         if(number < divider){
