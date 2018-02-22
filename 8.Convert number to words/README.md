@@ -9,7 +9,7 @@
 
 	ie:
 		input : 112
-		output : one hundred twelve.
+		output : one hundred twelve. 
 
 		input : 1012
 		output : one thousand twelve. 
