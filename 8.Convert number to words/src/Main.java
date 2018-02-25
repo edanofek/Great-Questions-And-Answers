@@ -1,6 +1,4 @@
 import java.util.Arrays;
-
- 
 import java.util.Hashtable;
 
 class Main {
@@ -17,9 +15,8 @@ class Main {
     private static String convertNumberToWords(Integer  number){
        
         if(number < divider){
-            // convert to words - future coding
-            return convert3DigitsToWords(number.toString());
-            
+            // con't here
+            return number.toString();
         }
          
         return convertNumberToWords((number%divider))+convertNumberToWords(number/divider);
