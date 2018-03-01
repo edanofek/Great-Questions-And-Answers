@@ -8,10 +8,13 @@ class Main {
     private static Hashtable<Integer ,String> hundredThousend;
     private static Integer divider = 1000; 
 
+    private static String convert3DigitsToWords(Integer number){
+
+    }
+
     private static String convertNumberToWords(Integer  number){
        
         if(number < divider){
-            // convert to words - future coding
             // con't here
             return number.toString();
         }
