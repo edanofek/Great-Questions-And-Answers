@@ -8,7 +8,7 @@
 	Write a method that convert this number to words (return string with the number in words).
 
 	ie:
-		input : 112
+		input : 112 
 		output : one hundred twelve. 
 
 		input : 1012
