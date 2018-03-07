@@ -1,19 +1,11 @@
 "# Great-Questions-And-Answers" 
 	
 	Great Question about palindrome with special characters.
-	-----------------------------------------------
+	---------------------------------------------------------
 
-    Given an input of signed Intger.
+    Given an input of string (can be with special charerters).
 
-	Write a method that convert this number to words (return string with the number in words).
+	Write a method that return {true / false} if the input is palindrome {mirror letters},only on the latters.
 
-	ie:
-		input : 112
-		output : one hundred twelve. 
 
-		input : 1012
-		output : one thousand twelve.
-		
-	P.S.
-		It's not necessary to use conjunctions such as "and".
 
