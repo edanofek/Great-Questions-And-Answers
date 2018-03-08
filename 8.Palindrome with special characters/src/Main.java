@@ -1,20 +1,29 @@
-import java.util.Arrays;
-import java.util.Hashtable;
 
-class Main {
-  
-   
+// import java.util.Arrays;
+
+
+public class Main {
+
+    
+    public static boolean isPoli(String checkPoli){
+    
+        int leftIndex =0,rightIndex = array.length-1;
+        final int numberToLeft = 0,numberToRight = 1;
+
+        do{
+
+            
+        }while(leftIndex<rightIndex);
+    }
+
 	public static void main(String[] args) {
-        Integer  number = 1986710102;
-        zeroToNine = new Hashtable<Integer ,String>();
-        tenToNinety = new Hashtable<Integer,String>();
-        
-        System.out.println("number intger");
-        System.out.println(number);
+        String checkPoliandrome1 = "$XY123m422X*";
+        String checkPoliandromey2 = "$X123m4*22X*";
 
-        System.out.println("number converted to words");
-        System.out.println(convertNumberToWords(number));
-        
+        System.out.println("mock array befroe switch");
+        System.out.println();
+        System.out.println("mock array after switch");
+        System.out.println();
 	}
 
 }
