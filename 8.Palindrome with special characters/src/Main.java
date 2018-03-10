@@ -1,4 +1,6 @@
 import java.lang.String;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Main {
     
@@ -10,10 +12,8 @@ public class Main {
     }
     public static boolean isPoli(String checkPoli){
     
-        int leftIndex =0,rightIndex = array.length-1;
-        
-        if(checkPoli.charAt(0) == checkPoli.charAt(checkPoli.length-1)){
-            return isPoli(checkPoli.substring(1,checkPoli.length - 2));
+        if(checkPoli.charAt(0) == checkPoli.charAt(checkPoli.length() - 1)){
+            return isPoli(checkPoli.substring(1,checkPoli.length() - 2));
         }
         return false;
         
@@ -23,10 +23,9 @@ public class Main {
         String checkPoliandrome1 = "$XY123m422X*";
         String checkPoliandrome2 = "$X123m4*22X*";
 
-        System.out.println("mock array befroe switch");
-        System.out.println(removeNotLatters(checkPoliandrome1));
-        System.out.println("mock array after switch");
-        System.out.println(removeNotLatters(checkPoliandrome2));
+        
+        System.out.println(String.valueOf(isPoli(removeNotLatters(checkPoliandrome1))));
+        System.out.println(String.valueOf(isPoli(removeNotLatters(checkPoliandrome2))));
 	}
 
 }
