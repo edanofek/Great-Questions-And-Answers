@@ -7,7 +7,7 @@ public class Main {
     public static String removeNotLatters(String strToRemoveRegex){
         String pattern = "\\w";
         Pattern r = Pattern.compile(pattern);
-        Matcher m = r.matcher(strToRemoveRegex);
+        Matcher m = r.matcher(strToRemoveRegex); 
         return m.group(0);
     }
     public static boolean isPoli(String checkPoli){
