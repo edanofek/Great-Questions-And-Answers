@@ -19,7 +19,7 @@ public class Main {
         
     }
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
         String checkPoliandrome1 = "$XY123m422X*";
         String checkPoliandrome2 = "$X123m4*22X*";
 
