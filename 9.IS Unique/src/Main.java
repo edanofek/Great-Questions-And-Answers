@@ -12,7 +12,7 @@ public class Main {
 		int i=0;
 		Hashtable<Character,Integer> lattersTable =
 			 new Hashtable<Character,Integer>();
- 
+  
 		do{
 			 
 			Character key = str.charAt(i);
