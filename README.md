@@ -9,5 +9,5 @@
 	7.Great Question about switching zeros and ones in array.
 	8.Great Question about palindrome with special characters. 
 	9.Great Question about "Is Unique". 
-	10.Great Question about strings permutation. 
+	10.Great Question about strings permutation.
 	11.Great Question about convert number to words.
