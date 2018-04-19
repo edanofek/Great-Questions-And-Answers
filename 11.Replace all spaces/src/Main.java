@@ -5,16 +5,16 @@ import java.util.Hashtable;
 
 public class Main {
     
+    public static char[] repalceAllSpaces(char[] val,int length){
+        return '';
+    }
 
 	public static void main(String[] args) { 
 
-    String str1 = "7",
-    str2 = "84",
-    str3 = "722",
-    str4 = "737";
+        int length = 13;
+        char []str = new char[length];
 
-    System.out.println(isPermutation(str1,str2));
-    System.out.println(isPermutation(str3,str4));
+        System.out.println(repalceAllSpaces(str,length));
                         
 	}
 
