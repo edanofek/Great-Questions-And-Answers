@@ -9,4 +9,4 @@
 	EXAMPLE
 	Input: Tact Coa
 	Output: True (permutations: "taco cat", "atco eta", etc.)
-	Hints: #106, #121, #134, #136 
+	Hints: #106, #121, #134, #136
