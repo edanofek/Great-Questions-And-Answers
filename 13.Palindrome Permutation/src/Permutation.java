@@ -67,7 +67,7 @@ public class Permutation
     {
         if (l == r)
         {
-            //check if is Palindrome
+            //check if permutation string is Palindrome
             if(this.isPalindrome(str))
             {
                  valStr.add(new String(str));
