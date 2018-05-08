@@ -27,6 +27,7 @@ public class OneAway {
         }else{
             //only one edit action need to be made in order to support the  contains action
             // TODO:Con't here
+            
         }
         
         //2.numbers of latter (don't must be relevent)
@@ -36,8 +37,10 @@ public class OneAway {
     public static void main(String[] args){
 
         OneAway _OneAway = new OneAway();
-        // TODO:Con't here
-        
+        String word1 = "pale",word2 = "ple";
+
+        System.out.println(_OneAway.oneEdit(word1, word2));
+         
     }
 
 }
