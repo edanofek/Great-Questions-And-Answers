@@ -13,7 +13,7 @@ public class OneAway {
         System.out.println(_OneAway.oneEdit(word1, word2));
          
     }
-    
+
     private boolean oneEdit(String word1,String word2) {
 
         
@@ -29,6 +29,8 @@ public class OneAway {
             // 1.if change one latter does the string will be contains -> O[N]
             // 2.if remove one latter does the string will be contains -> O[N]
             // 3.if add one latter does the string will be contains -> O[N]
+
+            // TODO:Con't here
             String largerWord = word1.length() >= word2.length() ? word1 : word2;
             String smallerWord = word1.length() < word2.length() ? word1 : word2;
 
