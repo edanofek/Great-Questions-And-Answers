@@ -16,7 +16,6 @@ public class OneAway {
 
     private boolean oneEdit(String word1,String word2) {
 
-        
         //if word1 contains word2 or word2 contains word1 
         if(word1.contains(word2) || word2.contains(word1)){
             return true;
@@ -30,7 +29,10 @@ public class OneAway {
             // 2.if remove one latter does the string will be contains -> O[N]
             // 3.if add one latter does the string will be contains -> O[N]
 
-            // TODO:Con't here
+
+            // TODO:Con't here:
+            // pale, ple -> true  --> add one latter in word one  or remove one latter in word two
+            // pale, bale -> true --> change one lattar in word one or word two 
             String largerWord = word1.length() >= word2.length() ? word1 : word2;
             String smallerWord = word1.length() < word2.length() ? word1 : word2;
 
