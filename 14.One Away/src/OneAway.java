@@ -44,7 +44,6 @@ public class OneAway {
                     
                     // pale, ple -> true  --> add one latter in word one  or remove one latter in word two
                     // abcde, abde -> true -- > need to add latter 'c' to word 2 or remove one latter
-
                     numbersOfEdits = 1; //base edit number (need to add one latter to smaller word)
                     String addLatterWord;
                     for(int i=0;i<largerWord.length();i++){
@@ -60,9 +59,11 @@ public class OneAway {
 
                     for (int i=0;i<largerWord.length();i++) {
                         if(largerWord.charAt(i) != addLatterWord.charAt(i)){
-                            return false; //more than one edit
+                            return false; //more than one edit return false
                         }    
                     }
+
+                    return true; //only one edit
                 }
             }
             
