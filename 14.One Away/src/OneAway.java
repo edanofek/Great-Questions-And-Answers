@@ -4,7 +4,6 @@ import java.util.Hashtable;
 
 public class OneAway {
 
-
     public static void main(String[] args){
 
         OneAway _OneAway = new OneAway();
