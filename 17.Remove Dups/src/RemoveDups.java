@@ -13,7 +13,7 @@ public class RemoveDups {
     
     private void removeDups() {
 
-        //Soluation one : with extra space - O[n] time complex / O[unique keys] memory
+        //Solution one : with extra space - O[n] time complex / O[unique keys] memory
         Hashtable<Integer,Integer> repNumbers = new Hashtable<Integer,Integer>(0);
 
         for (Integer item : m_unsorted_list) {
