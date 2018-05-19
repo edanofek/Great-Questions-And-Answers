@@ -13,13 +13,18 @@ public class RemoveDups {
     
     private void removeDups() {
 
+        //Soluation one : with extra space - O[n] time complex / O[unique keys] memory
         Hashtable<Integer,Integer> repNumbers = new Hashtable<Integer,Integer>(0);
 
         for (Integer item : m_unsorted_list) {
             Integer value = repNumbers.get(item);
             
-            System.out.println(value);
-            // repNumbers.put(item, );
+            repNumbers.put(item, value+1);
+            if(repNumbers.get(item)>1){
+                m_unsorted_list.remove(item);
+                repNumbers.put(item, 1);
+
+            }
         }
     }
 
