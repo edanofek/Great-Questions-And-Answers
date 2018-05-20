@@ -11,9 +11,9 @@ public class RemoveDups {
 
     }
     
-    private void removeDups() {
+    //Solution one : with extra space - O[n-all items in the list] time complex / O[unique keys] memory
+    private void removeDupsWithMemoryHelp() {
 
-        //Solution one : with extra space - O[n] time complex / O[unique keys] memory
         Hashtable<Integer,Integer> repNumbers = new Hashtable<Integer,Integer>(0);
 
         for (Integer item : m_unsorted_list) {
@@ -23,9 +23,15 @@ public class RemoveDups {
             if(repNumbers.get(item)>1){
                 m_unsorted_list.remove(item);
                 repNumbers.put(item, 1);
-
             }
         }
+        
+    }
+    
+    //Solution Two : without exta space - o[n*n] time / o[1] memory
+    private void removeDupsWithoutMemoryHelp() {
+
+       
     }
 
     public static void main(String[] args) {
@@ -33,7 +39,7 @@ public class RemoveDups {
         RemoveDups m_RemoveDups = new RemoveDups();
         System.out.println("Before:");
         System.out.println(m_RemoveDups.m_unsorted_list);
-        m_RemoveDups.removeDups();
+        m_RemoveDups.removeDupsWithMemoryHelp();
         System.out.println("After:");
         System.out.println(m_RemoveDups.m_unsorted_list);
     }
