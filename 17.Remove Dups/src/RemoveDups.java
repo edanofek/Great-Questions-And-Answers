@@ -31,7 +31,21 @@ public class RemoveDups {
     //Solution Two : without exta space - o[n*n] time / o[1] memory
     private void removeDupsWithoutMemoryHelp() {
 
-       
+       int i=0,j=0;
+       do{
+
+        for(j=i+1;j<m_unsorted_list.size();j++){
+            
+            if(m_unsorted_list.get(i).intValue() == m_unsorted_list.get(j).intValue()){
+                m_unsorted_list.remove(j);
+            }
+
+        }
+        
+        i++;
+
+       }while(i<m_unsorted_list.size());
+
     }
 
     public static void main(String[] args) {
@@ -39,8 +53,13 @@ public class RemoveDups {
         RemoveDups m_RemoveDups = new RemoveDups();
         System.out.println("Before:");
         System.out.println(m_RemoveDups.m_unsorted_list);
+        
         m_RemoveDups.removeDupsWithMemoryHelp();
-        System.out.println("After:");
+        System.out.println("After solution one:");
+        System.out.println(m_RemoveDups.m_unsorted_list);
+
+        m_RemoveDups.removeDupsWithoutMemoryHelp();
+        System.out.println("After solution two:");
         System.out.println(m_RemoveDups.m_unsorted_list);
     }
     
