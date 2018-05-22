@@ -13,7 +13,8 @@
 	11.Great Question about "replace all spaces".
 	12.Great Question about convert number to words.
 	13.Great Question about Palindrome Permutation.
-	14.Great Question On "One Away".
-	15.Great question On "String Compression".
-	16.Great question On "Rotate Matrix".
+	14.Great Question on "One Away".
+	15.Great question on "String Compression".
+	16.Great question on "Rotate Matrix".
 	17.Great question about "Remove Dups".
+	18.Great question on "Return Kth to Last".
