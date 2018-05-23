@@ -34,6 +34,9 @@ public class KthTOLast {
             for (int j=0;j<k && kPlace < m_list.size();j++){
                 kThLastPlace++;
                 kPlace++;
+                if(kPlace == m_list.size()){
+                    return m_list.get(kThLastPlace);
+                }
             }
             kThLastPlace-=1;
         }
