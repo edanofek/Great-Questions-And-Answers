@@ -16,5 +16,6 @@
 	14.Great Question on "One Away".
 	15.Great question on "String Compression".
 	16.Great question on "Rotate Matrix".
-	17.Great question about "Remove Dups".
+	17.Great question on "Remove Dups".
 	18.Great question on "Return Kth to Last".
+	19.Great question on "Partition".
