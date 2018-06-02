@@ -26,22 +26,33 @@ public class KthTOLast {
 
     }
 
+    private Integer advanceListIndexes(int p1,int p2){
+        for(i=0;i<k;i++){
+            if(p1 < m_list.size()){
+                p1++;
+                p2++;
+            }else{
+                return m_list.get(p2);
+            }
+        }
+    }
     public Integer returnKthTOLast(int k){
 
-        int kPlace = 0,kThLastPlace = 0;
-        while(kPlace  < m_list.size()){
-
-            for (int j=0;j<k && kPlace < m_list.size();j++){
-                kThLastPlace++;
-                kPlace++;
-                if(kPlace == m_list.size()){
-                    return m_list.get(kThLastPlace);
-                }
-            }
-            kThLastPlace-=1;
+        int p1=0,p2=0;
+        if(k ==0) {
+            k =1;
         }
-        return m_list.get(kThLastPlace+1);
+
+        advanceListIndexes(p1,p2);
+        p2=0;
+        
+        while(p1 < m_list.size()){
+            advanceListIndexes(p1,p2);
+        }
+
+        return m_list.get(p2);
     }
+
 
     public static void main(String[] args) {
      
