@@ -20,3 +20,4 @@
 	18.Great question on "Return Kth to Last".
 	19.Great question on "Partition".
 	20.Great question on "Sum Lists".
+	21.Great question on "Palindrome" in linked list.
