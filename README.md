@@ -21,3 +21,4 @@
 	19.Great question on "Partition".
 	20.Great question on "Sum Lists".
 	21.Great question on "Palindrome" in linked list.
+	22.Great question on "012 Array".
