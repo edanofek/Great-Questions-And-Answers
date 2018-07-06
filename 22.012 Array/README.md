@@ -9,7 +9,7 @@
     3.All the 1 will be set to the middle of the array
 
     i.e:
-    input: 0,2,1,2,2,0,1 
+    input: 0,2,1,2,2,0,1
     output: 0,0,1,1,2,2,2
 
 
