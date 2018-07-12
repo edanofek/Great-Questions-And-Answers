@@ -4,7 +4,7 @@
     --------------------------------------------------------------------
     
     Three in One: Describe how you could use a single array to implement three stacks.
-    Hints: #2, #38, #58
+    Hints: #2, #38, #58 
 
     
 
