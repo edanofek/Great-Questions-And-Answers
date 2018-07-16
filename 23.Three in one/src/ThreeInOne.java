@@ -39,9 +39,13 @@ public class Stack<T>{
 
 public class ThreeInOne {
 
+
+    //need to implement theClass of stack to be devided to three stack
     public ThreeInOne(){
 
     }
+
+
    
     public static void main(String[] args) {
 
