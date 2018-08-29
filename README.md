@@ -22,5 +22,5 @@
 	20.Great question on "Sum Lists".
 	21.Great question on "Palindrome" in linked list.
 	22.Great question on "012 Array".
-	23.Great question on "Three in One".
+	23.Great question on "Three in One". 
 	24.Great question on "duplicate in array".
